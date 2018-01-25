@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">IF-4 Apps</string>
+
+    <string name="nim_label">NIM</string>
+    <string name="login_label">Login</string>
+    <string name="nim_textinput_content_description">The textfield for enterin your nim.</string>
+    <string name="login_button_content_description">A login button will check your nim, are you if4 student?</string>
 </resources>
