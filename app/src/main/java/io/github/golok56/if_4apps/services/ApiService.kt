@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  * @author Satria Adi Putra
  */
-class BackendApi {
+class ApiService private constructor() {
     companion object {
         fun getInstance() : Retrofit {
             return Retrofit.Builder()
