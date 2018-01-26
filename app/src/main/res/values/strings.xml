@@ -3,6 +3,12 @@
 
     <string name="nim_label">NIM</string>
     <string name="login_label">Login</string>
-    <string name="nim_textinput_content_description">The textfield for enterin your nim.</string>
-    <string name="login_button_content_description">A login button will check your nim, are you if4 student?</string>
+    <string name="nim_textinput_content_description">The textfield for entering your nim.</string>
+    <string name="server_error_notif">Mohon maaf, terjadi kesalah pada server.</string>
+    <string name="nim_not_found_error">NIM Tidak diketahui</string>
+    <string name="login_progress_label">Mohon tunggu sebentar, kami sedang mengecek NIM kamu.</string>
+    <string name="nim_empty_error">NIM tidak boleh kosong</string>
+    <string name="internet_not_found_error">Silakan cek koneksi internet kamu.</string>
+    <string name="password_label">Password</string>
+    <string name="confirm_password_label">Confirm Password</string>
 </resources>
