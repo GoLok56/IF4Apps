@@ -20,8 +20,8 @@
             android:id="@+id/etNim"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:contentDescription="@string/nim_textinput_content_description"
-            android:hint="@string/nim_label" />
+            android:hint="@string/nim_label"
+            android:inputType="number" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -31,7 +31,6 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginBottom="8dp"
-        android:contentDescription="@string/login_button_content_description"
         android:text="@string/login_label"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
