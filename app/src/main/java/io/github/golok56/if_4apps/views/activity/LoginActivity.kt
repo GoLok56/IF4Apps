@@ -23,4 +23,14 @@ class LoginActivity : BaseActivity() {
                 .replace(R.id.fragmentContainer, fragment, tag)
                 .commit()
     }
+
+    override fun onBackPressed() {
+        val nimFragment = supportFragmentManager.findFragmentByTag(NimFragment.TAG)
+
+        if(nimFragment != null && nimFragment.isVisible){
+            super.onBackPressed()
+        } else {
+            show(NimFragment(), NimFragment.TAG)
+        }
+    }
 }

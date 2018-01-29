@@ -24,8 +24,8 @@ import retrofit2.Response
  * @author Satria Adi Putra
  */
 class NimFragment : Fragment() {
-    private var progressDialog : ProgressDialog? = null
     private lateinit var viewModel : LoginViewModel
+    private lateinit var bActivity : BaseActivity
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_nim, null)
@@ -36,6 +36,7 @@ class NimFragment : Fragment() {
         val studentApi = ApiService.getInstance().create(StudentApi::class.java)
 
         viewModel = ViewModelProviders.of(activity).get(LoginViewModel::class.java)
+        bActivity = activity as BaseActivity
 
         btnLogin.setOnClickListener {
             val nim = etNim.text.toString()
@@ -45,21 +46,15 @@ class NimFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            progressDialog = ProgressDialog.show(
-                    context,
-                    null,
-                    getString(R.string.login_progress_label),
-                    true
-            )
+            bActivity.showProgressDialog(getString(R.string.login_progress_label))
             studentApi.getStudent(nim).enqueue(StudentCallback())
         }
     }
 
     private inner class StudentCallback : Callback<Student> {
-        val bActivity = activity as BaseActivity
-
         override fun onResponse(call: Call<Student>?, response: Response<Student>?) {
             Log.i(TAG, "Response Code: ${response?.code()}")
+            bActivity.dismissProgressDialog()
             when(response?.code()){
                 500 -> bActivity.showToast(getString(R.string.server_error_notif))
                 404 -> etNim.error = getString(R.string.nim_not_found_error)
@@ -68,13 +63,10 @@ class NimFragment : Fragment() {
                     (activity as LoginActivity).show(PasswordFragment(), PasswordFragment.TAG)
                 }
             }
-            progressDialog?.dismiss()
         }
 
         override fun onFailure(call: Call<Student>?, t: Throwable?) {
-            Log.e(TAG, "Something when wrong! ${t?.message}")
-            bActivity.showToast(getString(R.string.internet_not_found_error))
-            progressDialog?.dismiss()
+            bActivity.handleNoInternet(TAG, t?.message)
         }
     }
 
