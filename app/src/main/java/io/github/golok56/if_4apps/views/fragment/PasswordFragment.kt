@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.gson.JsonObject
 import io.github.golok56.if_4apps.R
+import io.github.golok56.if_4apps.managers.PreferenceManager
 import io.github.golok56.if_4apps.models.Student
 import io.github.golok56.if_4apps.services.ApiService
 import io.github.golok56.if_4apps.services.api.StudentApi
@@ -45,6 +46,7 @@ class PasswordFragment : Fragment() {
         val welcomeText = "Hai ${student?.name}"
         tvWelcome.text = welcomeText
         if(student?.password == null) {
+            cbRemember.visibility = View.GONE
             tvEnterPass.text = getString(R.string.enter_password_not_logged_in_label)
         } else {
             tlConfirmPassword.visibility = View.GONE
@@ -104,6 +106,10 @@ class PasswordFragment : Fragment() {
                 401 -> etPassword.error = "Passwordnya salah tuh"
                 200 -> {
                     val student = response.body()
+                    if(cbRemember.isChecked){
+                        PreferenceManager.getInstance(bActivity)
+                                .setStudentRemembered(student.name, student.nim)
+                    }
                     bActivity.navigateTo(MainActivity::class.java, student, MainActivity.STUDENT_EXTRA)
                     bActivity.showToast("Selamat belajar ~")
                 }

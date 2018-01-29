@@ -21,7 +21,9 @@ open class BaseActivity : AppCompatActivity() {
 
     fun navigateTo(activity: Class<*>, extra: Parcelable?, tag: String?) {
         val intent = Intent(this, activity)
-        intent.putExtra(tag, extra)
+        if(extra != null) {
+            intent.putExtra(tag, extra)
+        }
         startActivity(intent)
     }
 
