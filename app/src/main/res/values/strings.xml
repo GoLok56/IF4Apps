@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">IF-4 Apps</string>
+
+    <string name="nim_label">NIM</string>
+    <string name="login_label">Login</string>
+    <string name="nim_textinput_content_description">The textfield for entering your nim.</string>
+    <string name="server_error_notif">Mohon maaf, terjadi kesalah pada server.</string>
+    <string name="nim_not_found_error">Ini bukan NIM anak IF4 2016</string>
+    <string name="login_progress_label">Dicek dulu ya NIM-nya.</string>
+    <string name="nim_empty_error">NIMnya jangan kosong guys</string>
+    <string name="internet_not_found_error">Silakan cek koneksi internet kamu.</string>
+    <string name="password_label">Password</string>
+    <string name="confirm_password_label">Confirm Password</string>
+    <string name="enter_password_not_logged_in_label">Pertama kali pake ya? Bikin password dulu yuk</string>
+    <string name="enter_password_logged_in_label">Masukkin passwordnya dulu dong</string>
+    <string name="remember_me_label">Remember me</string>
 </resources>
